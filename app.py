@@ -6,12 +6,11 @@ app = Flask(__name__)
 def home():
     return "Running Suessfully 🤑"
 
-@app.route("/get-url" , methods=["POST" ,"GET"])
+@app.route("/get-url" , methods=["GET"])
 def url_get():
-    if request.method == "POST":
-         url = request.json.get("url")
-         if not url:
-           return "Url is Must"
+    url = request.args.get("url")
+    if not url:
+        return jsonify("ERror")
     return jsonify({"URL_IS_GENERATED " : url })
 
     
