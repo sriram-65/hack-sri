@@ -27,7 +27,7 @@ def url_get():
 
 @app.route("/find")
 def finds():
-    data_url = list(URL_DATA.find({} , {"_id":0}))
+    data_url = list(URL_DATA.find({} , {"_id":0}).sort("_id" , -1).limit(1))
     return jsonify(data_url)
     
 
